@@ -1,48 +1,45 @@
-class Animal {
-    public void makeSound() {
-        System.out.println();
+class Shape {
+    double area() {
+        return 0;
     }
 }
 
-class Dog extends Animal {
+class Circle extends Shape {
+    double radius;
+
+    Circle(double radius){
+        this.radius = radius;
+    }
+
     @Override
-    public void makeSound() {
-        System.out.println("멍멍");
+    double area() {
+        return radius*radius*Math.PI;
     }
 }
 
-class Cat extends Animal {
-    @Override
-    public void makeSound() {
-        System.out.println("냐옹");
-    }
-}
+class Rectangle extends Shape {
+    double width;
+    double height;
 
-class Capybara extends Animal {
-    @Override
-    public void makeSound() {
-        System.out.println("끽");
+    Rectangle(double width, double height){
+        this.width = width;
+        this.height = height;
     }
-}
 
-class Quokka extends Animal {
     @Override
-    public void makeSound() {
-        System.out.println("퀔퀔!");
+    double area() {
+        return width*height;
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Animal a1 = new Dog();
-        Animal a2 = new Cat();
-        Animal a3 = new Capybara();
-        Animal a4 = new Quokka();
+        Shape[] shapes = new Shape[2];
+        shapes[0] = new Circle(3);
+        shapes[1] = new Rectangle(4,5);
 
-        Animal[] animals = {a1,a2,a3,a4};
-
-        for (int i = 0; i < animals.length; i++) {
-            animals[i].makeSound();
+        for (Shape shape : shapes) {
+            System.out.println(shape.area());
         }
     }
 }
